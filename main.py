@@ -38,7 +38,6 @@ def train_dqn(episode, net):
         state = env.reset()
         state = np.reshape(state, (1, agent.state_space))
         score = 0
-        max_steps = 3000
         done = False
         i = 0
         while not done:
@@ -68,14 +67,16 @@ def train_dqn(episode, net):
             tf.summary.scalar('Avg reward (last 100):', is_solved, step=e)
 
         print("Average over last 100 episode: {0:.2f} \n".format(is_solved))
-        if is_solved >= 200 and count_is_solved == 0:
-            count_is_solved += 1
-            agent.dqn_network.model.save_weights(
-                './checkpoints/' + net + '_' + current_time + '.h5')
-            if isinstance(agent, DDQN) or isinstance(agent, DQN_F):
-                agent.target_network.model.save_weights(
-                    './checkpoints/' + net + 'target' + '_' + current_time + '.h5')
+        if is_solved >= 200:
             print('\n Task Completed! \n')
+            if count_is_solved == 0:
+                count_is_solved += 1
+                agent.dqn_network.model.save_weights(
+                    './checkpoints/' + net + '_' + current_time + '.h5')
+                if isinstance(agent, DDQN) or isinstance(agent, DQN_F):
+                    agent.target_network.model.save_weights(
+                        './checkpoints/' + net + 'target' + '_' + current_time + '.h5')
+
     return loss
 
 def play_game():
