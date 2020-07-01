@@ -1,4 +1,4 @@
-#AdaptiveLunarLander
+# AdaptiveLunarLander
 
 AdaptiveLunarLander is a software that learns how to play LunarLander-v2 by OpenAIGym.\
 Three different network architectures are implemented to solve the task:
