@@ -13,8 +13,9 @@ To run the program open the terminal and type:
 python main.py
 ```
 
-Then there are two possibilities: train an agent or play an already trained agent to see how it plays in practice.\ 
-By default he following question will be asked:
+Then there are two possibilities: train an agent or play an already trained agent to see how it plays in practice.
+
+By default the following question will be asked:
 ```
 Do you want to play a trained agent or to train? ["play", "train"]:
 ```
